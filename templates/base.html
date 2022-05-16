@@ -9,42 +9,169 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+    <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Hidden brand</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+    <header class="container">
+        <div id="topnav" class="row bg-white py-lg-3 d-none d-lg-flex offset-1">
+            <!---------------------------------Logo Name------------------------>
+            <div class="col-12 col-lg-3 my-auto py-1 py-lg-4 text-center text-lg-left">
+                <a href="#" class="nav-link main-logo-link">
+                    <h4 class="logo-font text-black my-0 text-center d-lg-flex">
+                        <i class="fa fa-diamond mx-3"></i><span class="d-none d-md-block">Gerard Ambe </span>
+                    </h4>
+                </a>
+            </div>
+            <!-------------------------------------navbar------------------------->
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-4">
+                <nav class="navbar navbar-expand-lg navbar-light w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="main-nav">
+                        <ul class="navbar-nav w-auto mx-auto">
+                            <li class="nav-item dropdown">
+                                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#"
+                                    id="all-products-link" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    About
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#"
+                                    id="clothing-link" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Blogs
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#"
+                                    id="homeware-link" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    NewsLetter
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-----------------------------------section for search---------------------->
+            <div class="col-12 col-lg-3 my-auto py-1 py-lg-3 text-lg-right">
+                <form method="GET" action="#" style="float: right;">
+                    <div class="input-group w-100 text-lg-right">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                <span class="icon" style="background-color: #ffff;">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </nav>
-    </div>
-
+    </header>
 
     <div class=" blog-single gray-bg">
         <div class="container">
-            <div class="row align-items-start">
+            <div class="row align-items-start offset-1">
                 <div class="col-lg-4 m-15px-tb blog-aside">
-                    <!-- Author -->
+
+
+                    <div class="ibox-content no-padding border-left-right">
+                        <img alt="image" class="img-responsive" src="static/img/20200101_215945.jpg">
+                    </div>
+                    <div class="ibox-content profile-content">
+                        <h3><strong>Personal Information</strong></h3>
+                        <p>Hey, I'm a Full Stack Software Developer, Technical Writer, and a Modern Web Development
+                            Trainer. I like to teach what i learnt, as teaching is part of learning.</p>
+                        <p><i class="fa fa-map-marker"></i> Kalstad, Sweden</p>
+                        <div class="row m-t-lg">
+                            <div class="stats">
+                                <div class="statis">
+                                    <span class="bar" style="display: none;">5,3,9,6,5,9,7,3,5,2</span><svg
+                                        class="peity" height="16" width="32">
+                                        <rect fill="#1ab394" x="0" y="7.111111111111111" width="2.3"
+                                            height="8.88888888888889"></rect>
+                                        <rect fill="#d7d7d7" x="3.3" y="10.666666666666668" width="2.3"
+                                            height="5.333333333333333">
+                                        </rect>
+                                        <rect fill="#1ab394" x="6.6" y="0" width="2.3" height="16"></rect>
+                                        <rect fill="#d7d7d7" x="9.899999999999999" y="5.333333333333334" width="2.3"
+                                            height="10.666666666666666"></rect>
+                                        <rect fill="#1ab394" x="13.2" y="7.111111111111111" width="2.3"
+                                            height="8.88888888888889">
+                                        </rect>
+                                        <rect fill="#d7d7d7" x="16.5" y="0" width="2.3" height="16"></rect>
+                                        <rect fill="#1ab394" x="19.799999999999997" y="3.555555555555557" width="2.3"
+                                            height="12.444444444444443"></rect>
+                                        <rect fill="#d7d7d7" x="23.099999999999998" y="10.666666666666668" width="2.3"
+                                            height="5.333333333333333"></rect>
+                                        <rect fill="#1ab394" x="26.4" y="7.111111111111111" width="2.3"
+                                            height="8.88888888888889">
+                                        </rect>
+                                        <rect fill="#d7d7d7" x="29.7" y="12.444444444444445" width="2.3"
+                                            height="3.5555555555555554">
+                                        </rect>
+                                    </svg>
+                                    <h5><strong>169</strong><br>Posts</h5>
+                                </div><!-- /statis -->
+
+                                <div class="statis">
+                                    <span class="line" style="display: none;">5,3,9,6,5,9,7,3,5,2</span><svg
+                                        class="peity" height="16" width="32">
+                                        <polygon fill="#1ab394"
+                                            points="0 15 0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666 32 15">
+                                        </polygon>
+                                        <polyline fill="transparent"
+                                            points="0 7.166666666666666 3.5555555555555554 10.5 7.111111111111111 0.5 10.666666666666666 5.5 14.222222222222221 7.166666666666666 17.77777777777778 0.5 21.333333333333332 3.833333333333332 24.888888888888886 10.5 28.444444444444443 7.166666666666666 32 12.166666666666666"
+                                            stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline>
+                                    </svg>
+                                    <h5><strong>28</strong><br>Following</h5>
+                                </div> <!-- /statis -->
+
+                                <div class="statis">
+                                    <span class="bar" style="display: none;">5,3,2,-1,-3,-2,2,3,5,2</span><svg
+                                        class="peity" height="16" width="32">
+                                        <rect fill="#1ab394" x="0" y="0" width="2.3" height="10"></rect>
+                                        <rect fill="#d7d7d7" x="3.3" y="4" width="2.3" height="6"></rect>
+                                        <rect fill="#1ab394" x="6.6" y="6" width="2.3" height="4"></rect>
+                                        <rect fill="#d7d7d7" x="9.899999999999999" y="10" width="2.3" height="2"></rect>
+                                        <rect fill="#1ab394" x="13.2" y="10" width="2.3" height="6"></rect>
+                                        <rect fill="#d7d7d7" x="16.5" y="10" width="2.3" height="4"></rect>
+                                        <rect fill="#1ab394" x="19.799999999999997" y="6" width="2.3" height="4"></rect>
+                                        <rect fill="#d7d7d7" x="23.099999999999998" y="4" width="2.3" height="6"></rect>
+                                        <rect fill="#1ab394" x="26.4" y="0" width="2.3" height="10"></rect>
+                                        <rect fill="#d7d7d7" x="29.7" y="6" width="2.3" height="4"></rect>
+                                    </svg>
+                                    <h5><strong>240</strong><br>Followers</h5>
+                                </div> <!-- /statis -->
+                            </div>
+                        </div><!-- /row m-t-lg -->
+
+                        <div class="user-button">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block">
+                                        <i class="fa fa-envelope"></i> Send Message</button>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-default btn-sm btn-block">
+                                        <i class="fa fa-coffee"></i> Buy a coffee</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /profile-content -->
+                </div>
+                <!-- Author --
                     <div class="widget widget-author">
                         <div class="widget-title">
                             <h3>Author</h3>
@@ -58,23 +185,35 @@
                                     <h6>Hello, I'm<br> Rachel Roth</h6>
                                 </div>
                             </div>
-                            <p>I design and develop services for customers of all sizes, specializing in creating
+                            <p>I design and develop services for customers of all sizes, specializing in
+                                creating
                                 stylish,
                                 modern websites, web services and online stores</p>
                         </div>
                     </div>
-                    <!-- End Author -->
-                    <!-- Trending Post -->
+                    -- End Author -->
+                <!-- Trending Post -->
+                <div class="col-lg-6 m-15px-tb blog-aside">
                     <div class="widget widget-post">
                         <div class="widget-title">
-                            <h3>Trending Now</h3>
+                            <!--   <h3>Trending Now</h3> -->
+                            <h3>Most In-Demand Programming Languages</h3>
                         </div>
                         <div class="widget-body">
-
+                            <div class="nav tag-cloud">
+                                <a href="#">JavaScript</a>
+                                <a href="#">Python</a>
+                                <a href="#">HTML</a>
+                                <a href="#">CSS</a>
+                                <a href="#">SQL</a>
+                                <a href="#">TypeScript</a>
+                                <a href="#">NodeJs</a>
+                            </div>
                         </div>
                     </div>
                     <!-- End Trending Post -->
                     <!-- Latest Post -->
+
                     <div class="widget widget-latest-post">
                         <div class="widget-title">
                             <h3>Latest Post</h3>
@@ -160,158 +299,23 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End widget Tags -->
+
                 </div>
-                <div class="col-lg-8 m-15px-tb">
+                <!-- End widget Tags -->
+
+                <div class="col-12 m-15px-tb">
                     <article class="article">
-                        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-                            rel="stylesheet">
-                        <section class="section-big main-color">
-                            <div class="container">
-
-                                <div class="row">
-                                    <div class="col-md-12 pb-20 text-center">
-                                        <h2 class="section-title mb-10"><span> Some <strong
-                                                    class="primary-color">Vertex</strong> Core Featuress
-                                            </span></h2>
-                                        <p class="section-sub-title">
-                                            I am a passionate full-stack developer that specializes in beautiful and
-                                            easy-to- <br>
-                                            use digital design &amp; web development services. I write about what i have
-                                            learnt to help not just myself but other developers.
-                                        </p>
-                                        <div class="exp-separator center-separator">
-                                            <div class="exp-separator-inner">
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <ul class="i-list medium">
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-desktop"></i> </div>
-
-                                                <div class="icon-content">
-                                                    <h3 class="title">Fully Responsive Design</h3>
-                                                    <p class="sub-title">
-                                                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
-                                                        eu,
-                                                        consequat vitae, eleifend ac, enim ante, dapibus in.
-                                                    </p>
-                                                </div>
-                                                <div class="iconlist-timeline"></div>
-                                            </li>
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-code"></i> </div>
-
-                                                <div class="icon-content">
-                                                    <h3 class="title">Easy &amp; Clean Code</h3>
-                                                    <p>
-                                                        Aenean vulputate tellus. Aenean leo ligula, porttitor eu,
-                                                        consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus
-                                                        in.
-                                                    </p>
-                                                </div>
-                                                <div class="iconlist-timeline"></div>
-                                            </li>
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-paper-plane"></i> </div>
-
-                                                <div class="icon-content">
-                                                    <h3 class="title">24/7 Customer Support</h3>
-                                                    <p>
-                                                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
-                                                        eu,
-                                                        consequat, eleifend ac, enim lorem ante, dapibus in.
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul class="i-list medium">
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-diamond"></i> </div>
-                                                <div class="icon-content">
-                                                    <h3 class="title">Endless Possibilites</h3>
-                                                    <p class="sub-title">
-                                                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
-                                                        eu,
-                                                        consequat vitae, eleifend Aliquam lorem ante, dapibus in.
-                                                    </p>
-                                                </div>
-                                                <div class="iconlist-timeline"></div>
-                                            </li>
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-recycle"></i> </div>
-                                                <div class="icon-content">
-                                                    <h3 class="title">Free Lifetime Updates</h3>
-                                                    <p>
-                                                        Aenean eleifend tellus. Aenean leo ligula, porttitor eu
-                                                        consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus
-                                                        in.
-                                                    </p>
-                                                </div>
-                                                <div class="iconlist-timeline"></div>
-                                            </li>
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-check"></i> </div>
-                                                <div class="icon-content">
-                                                    <h3 class="title">Clean &amp; Modern Design</h3>
-                                                    <p>
-                                                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
-                                                        eu,
-                                                        consequat vitae, eleifend enim lorem ante, dapibus in.
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul class="i-list medium">
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-codepen"></i> </div>
-                                                <div class="icon-content">
-                                                    <h3 class="title">Useful Shortcodes</h3>
-                                                    <p class="sub-title">
-                                                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
-                                                        eu,
-                                                        consequat vitae, eleifend ac, enim. Aliquam lorem ante.
-                                                    </p>
-                                                </div>
-                                                <div class="iconlist-timeline"></div>
-                                            </li>
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-newspaper-o"></i> </div>
-                                                <div class="icon-content">
-                                                    <h3 class="title">Multipurpose Concept</h3>
-                                                    <p>
-                                                        Aenean vulputate eleifend tellus ligula, porttitor eu,
-                                                        consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus
-                                                        in.
-                                                    </p>
-                                                </div>
-                                                <div class="iconlist-timeline"></div>
-                                            </li>
-                                            <li class="i-list-item">
-                                                <div class="icon"> <i class="fa fa-heart-o"></i> </div>
-                                                <div class="icon-content">
-                                                    <h3 class="title">Crafted With Love</h3>
-                                                    <p>
-                                                        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor
-                                                        eu,
-                                                        consequat vitae, eleifend ac lorem ante, dapibus in.
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                        <!-- Trending Post -->
+                        <div class="widget widget-post">
+                            <div class="widget-title">
+                                <h3>Trending Now</h3>
                             </div>
-                        </section>
+                            <div class="widget-body">
+
+                            </div>
+                        </div>
+                        <!-- End Trending Post -->
+
                         <div class="nav tag-cloud">
                             <a href="#">Design</a>
                             <a href="#">Development</a>
@@ -357,7 +361,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

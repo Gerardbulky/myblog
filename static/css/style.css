@@ -1,7 +1,12 @@
 body {
-    margin-top: 20px;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: black;
 }
 
+
+
+/* blog css */
 .blog-listing {
     padding-top: 30px;
     padding-bottom: 30px;
@@ -73,12 +78,17 @@ body {
 
 /* Blog Sidebar
 -------------------*/
+
+.blog-aside {
+    margin-left: 20px;
+}
+
 .blog-aside .widget {
     box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
     border-radius: 5px;
     overflow: hidden;
     background: #ffffff;
-    margin-top: 15px;
+    margin-top: 0px;
     margin-bottom: 15px;
     width: 100%;
     display: inline-block;
@@ -301,6 +311,15 @@ body {
     padding-top: 10px;
 }
 
+.tag-cloud a {
+    text-decoration: none;
+}
+
+.tag-cloud a:hover {
+    background-color: rgb(8, 17, 34);
+    color: #ffffff;
+}
+
 .article-comment {
     box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
     border-radius: 5px;
@@ -389,6 +408,319 @@ img {
     margin-top: 20px;
 }
 
+/*----------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------*/
+/* --------------------------------------------
+    ICON LIST
+-------------------------------------------- */
+
+
+
+
+/* ----------------------from bossman ecommerce -------------------------*/
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font {
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+.shop-now-button {
+    background: black;
+    color: white;
+    min-width: 260px;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    /* use important to override link colors for <a> elements */
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+.bg-black {
+    background: #000 !important;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+}
+
+a.category-badge>span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
+/* -------------------------------- Boostrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/*----------------photo profile section --------------------------------------------------------------------------------*/
+.img-responsive,
+.thumbnail>img,
+.thumbnail a>img,
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/*panel heading*/
+.panel-heading {
+    padding: 15px 10px 15px 10px;
+    border-bottom: 0px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f6f8;
+    border-color: none !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #a9b1bc !important;
+    border-color: #a9b1bc !important;
+}
+
+.btn-primary:hover {
+    background-color: #969ca5 !important;
+}
+
+.profile-content h3 {
+    margin: 15px 0 10px 0 !important;
+}
+
+.stats {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    display: table;
+}
+
+.stats .statis {
+    display: table-cell;
+    width: 25%;
+    vertical-align: top;
+}
+
+.ibox-content {
+    background-color: #FFFFFF;
+    color: inherit;
+    padding: 0px 20px 20px 20px;
+}
+
+.feed-activity-list .feed-element {
+    border-bottom: 1px solid #E7EAEC;
+}
+
+.feed-element {
+    padding: 15px 0 15px 0;
+}
+
+.feed-element img.img-circle,
+.dropdown-messages-box img.img-circle {
+    width: 38px;
+    height: 38px;
+}
+
+.feed-element>.pull-left {
+    margin-right: 10px;
+}
+
+.feed-element .well {
+    border: 1px solid #E7EAEC;
+    box-shadow: none;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.text-navy {
+    color: #1AB394;
+}
+
+.feed-element .actions {
+    margin-top: 10px;
+}
+
+.feed-photo {
+    height: 180px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-white {
+    color: inherit;
+    background: white;
+    border: 1px solid #E7EAEC;
+}
+
+.btn {
+    border-radius: 3px;
+}
+
+.btn-cprimary {
+    background-color: #f5f6f8;
+    border-color: #f5f6f8;
+    color: #333;
+}
+
+.btn-danger {
+    background-color: #ef5352;
+    border-color: #ef5352;
+    color: #FFFFFF;
+}
+
+.btn {
+    border-radius: 3px;
+}
+
+/*---------------------------------------------------------------------------------------*/
+
 @media (max-width: 767px) {
     .contact-form .send {
         margin-bottom: 20px;
@@ -467,234 +799,4 @@ img {
     -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-
-
-body {
-    margin-top: 20px;
-}
-
-/* --------------------------------------------
-    ICON LIST
--------------------------------------------- */
-
-ul.i-list {
-    padding-left: 0;
-    list-style: none;
-}
-
-ul.i-list .list-title {
-    display: inline-block;
-    position: absolute;
-}
-
-ul.i-list li {
-    padding: 2px 0px;
-}
-
-ul.i-list i.fa {
-    margin-right: 7px;
-}
-
-ul.i-list .list-item {
-    margin-top: 3px;
-    display: inline-block;
-}
-
-ul.i-list.filled i.fa {
-    color: white;
-    font-size: 9px;
-    padding: 5px;
-    border-radius: 50%;
-}
-
-ul.e-icon-list.filled li {
-    padding: 2px 0px;
-    line-height: 24px;
-}
-
-ul.i-list.underline li {
-    padding: 6px 0px;
-    border-bottom: 1px solid #eee;
-}
-
-ul.i-list.medium li {
-    padding-bottom: 25px;
-    position: relative;
-}
-
-ul.i-list.medium .icon {
-    margin-right: 25px;
-    color: white;
-    font-size: 25px;
-    text-align: center;
-    line-height: 68px;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, .28);
-    position: relative;
-    z-index: 1;
-    /*background-image: url(../img/crease.svg) !important;
-   -moz-background-size: 100% 100% !important;
-   background-size: 100% 100% !important;
-   background-position: center center !important;*/
-}
-
-ul.i-list.medium .icon i.fa {
-    margin: 0;
-}
-
-ul.i-list.medium.bordered .icon {
-    background: white;
-    color: inherit;
-    border: 2px solid #8fc135;
-    font-size: 26px;
-    color: #8fc135;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .28);
-}
-
-ul.i-list.medium .list-item {
-    text-transform: uppercase;
-}
-
-ul.i-list.large .icon {
-    margin-right: 30px;
-    background: #d0d0d0;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    line-height: 80px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .28);
-}
-
-ul.i-list.large .icon i.fa {
-    margin: 0;
-}
-
-ul.i-list.large.bordered .icon {
-    background: inherit;
-    color: inherit;
-    border: 2px solid #8fc135;
-    font-size: 30px;
-    color: #8fc135;
-}
-
-ul.i-list.large .list-item {
-    text-transform: uppercase;
-}
-
-ul.i-list .icon {
-    float: left;
-}
-
-ul.i-list.right {
-    text-align: right;
-}
-
-ul.i-list.right .icon {
-    float: right;
-}
-
-ul.i-list.right .icon {
-    float: right;
-    margin-right: 0;
-    margin-left: 25px;
-}
-
-ul.i-list.large.right .icon {
-    float: right;
-    margin-right: 0;
-    margin-left: 30px;
-}
-
-ul.i-list.large li {
-    margin-bottom: 25px;
-}
-
-ul.i-list .icon-content {
-    overflow: hidden;
-}
-
-ul.i-list .icon-content .title {
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-.left-line .iconlist-timeline {
-    left: auto;
-    right: 35px;
-}
-
-.iconlist-timeline {
-    position: absolute;
-    top: 1%;
-    left: 32px;
-    width: 1px;
-    height: 99%;
-    border-right-width: 1px;
-    border-right-style: dashed;
-    height: 100%;
-    border-color: #ccc;
-}
-
-.icon {
-    background-color: #0cb4ce;
-}
-
-separator,
-.testimonial-two,
-.exp-separator-inner {
-    border-color: #0cb4ce;
-}
-
-.exp-separator {
-    border-color: #0cb4ce;
-    border-top-width: 2px;
-    margin-top: 10px;
-    margin-bottom: 2px;
-    width: 100%;
-    max-width: 55px;
-    border-top-style: solid;
-    height: auto;
-    clear: both;
-    position: relative;
-    z-index: 11;
-}
-
-.section-sub-title {
-    font-size: 18px;
-    margin-bottom: 20px;
-    font-weight: 400;
-    font-family: Poppins;
-}
-
-.section-title {
-    font-size: 32px;
-    font-weight: 600;
-    margin-top: 0.45em;
-    margin-bottom: 0.35em;
-    color: #303133;
-    font-family: Poppins;
-    letter-spacing: -0.02em;
-}
-
-.pb-20 {
-    padding-bottom: 20px !important;
-}
-
-.text-center {
-    text-align: center !important;
-}
-
-.center-separator .exp-separator-inner,
-.center-separator.exp-separator {
-    margin-left: auto;
-    margin-right: auto;
 }
