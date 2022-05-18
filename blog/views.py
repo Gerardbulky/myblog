@@ -8,7 +8,7 @@ from django.core.paginator import Paginator, EmptyPage,\
 def post_list(request):
     posts = Post.published.all()
     object_list = Post.published.all()
-    paginator = Paginator(object_list, 1)  # 3 posts in each page
+    paginator = Paginator(object_list, 3)  # 1 posts in each page
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -19,8 +19,8 @@ def post_list(request):
         # If page is not of range deliver last page of result
         posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/post/list.html',
-                            {'page': page, 
-                             'posts': posts})
+                           {'page': page,
+                            'posts': posts})
 
 
 def post_detail(request, year, month, day, post):
@@ -31,3 +31,9 @@ def post_detail(request, year, month, day, post):
                                    publish__day=day)
 
     return render(request, 'blog/post/detail.html', {'post': post})
+
+
+
+def news_letter(request, methods=["POST", "GET"]):
+
+    return(request, 'blog/post/news_letter.html')

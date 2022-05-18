@@ -1,0 +1,400 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/aea20c0f6b.js" crossorigin="anonymous"></script>
+    <title>{% block title %}My Blog {% endblock %}</title>
+</head>
+
+<body>
+    {% block page_header %}
+    <header class="container">
+        <div id="topnav" class="row bg-white py-lg-3 d-none d-lg-flex">
+            <!---------------------------------Logo Name------------------------>
+            <div class="col-12 col-lg-3 my-auto py-1 py-lg-4 text-center text-lg-left  offset-1">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <h4 class="logo-font text-black my-0 text-center d-lg-flex">
+                        <i class="fa fa-diamond mx-3"></i><span class="d-none d-md-block">Gerard Ambe </span>
+                    </h4>
+                </a>
+            </div>
+            <!-------------------------------------navbar------------------------->
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-4">
+                <nav class="navbar navbar-expand-lg navbar-light w-100 ">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="main-nav">
+                        <ul class="navbar-nav w-auto mx-auto">
+                            <li class="nav-item dropdown">
+                                <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#"
+                                    id="all-products-link" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    About
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="logo-font font-weight-bold nav-link text-black mr-5"
+                                    href="{% url 'blog:post_list' %}" id="clothing-link" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Blogs
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="logo-font font-weight-bold nav-link text-black mr-5"
+                                    href="{% url 'blog:news_letter' %}" id="homeware-link" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    NewsLetter
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-----------------------------------section for search---------------------->
+            <div class="col-12 col-lg-3 my-auto py-1 py-lg-3 text-lg-right">
+                <form method="GET" action="#" style="float: right;">
+                    <div class="input-group w-100 text-lg-right">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search our site">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                <span class="icon" style="background-color: #ffff;">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+    <!----------header section ends------>
+    <!-------------------Portfolio section start---------------------------------------->
+    {% block content %}
+    <div class=" blog-single">
+        <div class="container">
+            <div class="row">
+
+                <div class="d-none d-md-block col-lg-2 col-md-3 offset-1">
+                    <div class="img-container">
+                        <img src="static/img/20200101_215945.jpg" style="border-radius: 75%;" alt="team member"
+                            class="img-full">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5">
+                    <div class="member_designation">
+                        <h2 class="mb-1">Gerard Ambe</h2>
+                        <span class="mb-1">Full-stack Software Developer</span>
+                    </div>
+                    <div class="member_desc">
+                        <p>
+                            Hey, I'm a Full Stack Software Developer, Technical Writer, and a Modern Web Development
+                            Trainer. I write about modern
+                            JavaScript, Python, Node.js, React, React-Native, mobile, desktop and web app
+                            development. I believe that what you read matters and great writing is valuable.
+                        </p>
+                    </div>
+                    <!----    <div class="bg-image "
+                        style="background-image: url('https://www.bootdey.com/img/Content/bg_element.jpg');">
+                        <div class="member_contact">
+                            <div class="row">
+                                <div class="col-lg-4  mb-3 mb-lg-0">
+                                    <div class="media-box">
+                                        <div class="media-icon">
+                                            <i class="fa fa-tablet" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h5>Phone</h5>
+                                            <p><a href="callto">(+1) 251-235-3256</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4  mb-3 mb-lg-0">
+                                    <div class="media-box">
+                                        <div class="media-icon">
+                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="media-content">
+                                            <h5>Email</h5>
+                                            <p><a href="mailto">info@example.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="social-icons">
+                                        <button class="btn btn-social outlined"><i
+                                                class="fa fa-facebook-f"></i></button>
+                                        <button class="btn btn-social outlined"><i class="fa fa-twitter"></i></button>
+                                        <button class="btn btn-social outlined"><i class="fa fa-linkedin"></i></button>
+                                        <button class="btn btn-social outlined"><i
+                                                class="fa fa-pinterest-p"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-12 col-md-auto col-lg-auto mb-3" style="width: 200px;">
+                    <div class=" p-3">
+                        <div class="e-navlist e-navlist--active-bg">
+                            <ul class="nav">
+                                <li class="nav-item"><a class="nav-link px-2 active" href="#"><i
+                                            class="fa-brands fa-github mr-1"></i>
+                                        <span>Overview</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2"
+                                        href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i
+                                            class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
+                                <li class="nav-item"><a class="nav-link px-2"
+                                        href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page"
+                                        target="__blank"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--------profile  begins----------->
+
+
+                <!------------------Most in demand section----------------------------------------->
+                <div class="col-md-8 col-lg-8 mt-5 offset-2 m-15px-tb blog-aside">
+                    <div class="widget widget-post mb-4">
+                        <div class="widget-title">
+                            <!--   <h3>Trending Now</h3> -->
+                            <h3 class="my-3">Most In-Demand Programming Languages</h3>
+                        </div>
+                        <div class="widget-body">
+                            <div class="nav tag-cloud my-2">
+                                <a href="#">JavaScript</a>
+                                <a href="#">Python</a>
+                                <a href="#">HTML</a>
+                                <a href="#">CSS</a>
+                                <a href="#">SQL</a>
+                                <a href="#">TypeScript</a>
+                                <a href="#">NodeJs</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Trending Post -->
+                    <!-- Latest Post -->
+
+                    <div class="widget widget-latest-post mb-4">
+                        <div class="widget-title my-3" style="display: flex;">
+                            <h3 class="latest-post">Latest Post</h3> <button class="button">view all</button>
+                        </div>
+                        <div class="widget-body">
+                            <div class="latest-post-aside media" style="display: flex;">
+                                <div class="lpa-right" align="left">
+                                    <a href="#" style="width: 10%;">
+                                        <img src="https://icon-library.com/images/javascript-icon-png/javascript-icon-png-23.jpg"
+                                            title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="lpa-left media-body" style="width: 90%;">
+                                    <div class="lpa-title">
+                                        <h5><a href="#">Arrow function in javascript Explained!</a></h5>
+                                    </div>
+                                    <div class="lpa-meta">
+                                        <a class="name" href="#">
+                                            Gerard Ambe
+                                        </a>
+                                        <a class="date" href="#">
+                                            26 FEB 2020
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="latest-post-aside media" style="display: flex;">
+                                <div class="lpa-right">
+                                    <a href="#" style="width: 10%;" align="left">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"
+                                            title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="lpa-left media-body" style="width: 90%;">
+                                    <div class="lpa-title">
+                                        <h5><a href="#">useMemo - React Hooks Series</a></h5>
+                                    </div>
+                                    <div class="lpa-meta">
+                                        <a class="name" href="#">
+                                            Gerard Ambe
+                                        </a>
+                                        <a class="date" href="#">
+                                            26 FEB 2020
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="latest-post-aside media" style="display: flex;">
+                                <div class="lpa-right" align="left">
+                                    <a href="#" style="width: 10%;">
+                                        <img src="https://pratapsharma.io/static/517c02bd875932e2a959488763695b28/92ab1/node.png"
+                                            title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="lpa-left media-body">
+                                    <div class="lpa-title" style="width: 90%;">
+                                        <h5><a href="#">Building RESTful API using Nodejs and Express</a></h5>
+                                    </div>
+                                    <div class="lpa-meta">
+                                        <a class="name" href="#">
+                                            Gerard Ambe
+                                        </a>
+                                        <a class="date" href="#">
+                                            26 FEB 2020
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Latest Post -->
+                    <!-- widget Tags -->
+                    <div class="widget widget-tags">
+                        <div class="widget-title">
+                            <h3 class="artic">Articles</h3> <button class="button">view all</button>
+                        </div>
+                        <div class="widget-body">
+                            <div class="nav tag-cloud">
+                                <a href="#">Advice</a>
+                                <a href="#">Code</a>
+                                <a href="#">Data-Structure</a>
+                                <a href="#">Guest-Post</a>
+                                <a href="#">Interview-Questions</a>
+                                <a href="#">Investing</a>
+                                <a href="#">Personal</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End widget Tags -->
+
+                <div class="col-md-8 m-15px-tb offset-2">
+                    <article class="article">
+                        <!-- Trending Post -->
+                        <div class="widget widget-post">
+                            <div class="widget-title">
+                                <h3>Trending Now</h3>
+                            </div>
+                            <div class="widget-body">
+
+                            </div>
+                        </div>
+                        <!-- End Trending Post -->
+
+                        <ul class="styled_list">
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Morbi
+                                fermentum
+                                felis nec</li>
+                            <hr style="width: 100%; color:black">
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Morbi
+                                fermentum
+                                felis nec gravida tempus.
+                            </li>
+                            <hr style="width: 100%; color:black">
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Morbi
+                                fermentum
+                                felis nec gravida</li>
+                            <hr style="width: 100%; color:black">
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Morbi
+                                fermentum
+                                felis nec</li>
+                            <hr style="width: 100%; color:black">
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Morbi
+                                fermentum
+                                felis nec gravida tempus.
+                            </li>
+                            <hr style="width: 100%; color:black">
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Morbi
+                                fermentum
+                                felis nec gravida</li>
+                        </ul>
+                    </article>
+                    <div class="contact-form article-comment">
+                        <h4>Leave a Reply</h4>
+                        <form id="contact-form" method="POST">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input name="Name" id="name" placeholder="Name *" class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input name="Email" id="email" placeholder="Email *" class="form-control"
+                                            type="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="message" id="message" placeholder="Your message *" rows="4"
+                                            class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="send">
+                                        <button class="px-btn theme"><span>Submit</span> <i class="arrow"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Nellie Maxwell Header section-->
+            <div class="container-m-nx container-m-ny theme-bg-white mt-4">
+                <div class="media col-md-10 col-lg-8 col-xl-7 py-5 mx-auto" style="padding: 15px;">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                        class="d-block ui-w-100 rounded-circle" align="left" style="margin-right: 25px;">
+                    <div class="media-body ml-5">
+                        <h4 class="font-weight-bold mb-4">Nellie Maxwell</h4>
+
+                        <div class="text-muted mb-4">
+                            Lorem ipsum dolor sit amet, nibh suavitate qualisque ut nam. Ad harum primis electram
+                            duo,
+                            porro
+                            principes ei has.
+                        </div>
+                        <div class="user-button">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block">
+                                        <i class="fa fa-envelope"></i> Send Message</button>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-default btn-sm btn-block">
+                                        <i class="fa fa-coffee"></i> Buy a coffee</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Header -->
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+
+</body>
+
+
+</html>
