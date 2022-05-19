@@ -4,6 +4,7 @@
 {% block title %} My Blog {% endblock %}
 
 {% block content %}
+<!------------------main header section----------------------------->
 <div class="gradient-section">
     <div class="container">
         <h2 class="text-center" style="color: #ffffff;">Missing instruction manuals of the web
@@ -11,23 +12,33 @@
         <div class="instruction-manual">
             <a href="">
                 <img src="https://pratapsharma.io/static/strapi-509ab948960ecabc0cafd19a060c1b3c.png" alt="strapi">
-                <h3>Strapi</h3>
+                <h3>#Strapi</h3>
             </a>
             <a href="">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png"
                     alt="strapi">
-                <h3>JavaScript</h3>
+                <h3>#JavaScript</h3>
             </a>
             <a href="">
                 <img src="https://ellinorwase.github.io/git-project/images/git().png" alt="strapi">
-                <h3>Git</h3>
+                <h3>#Git</h3>
             </a>
             <a href="">
                 <img src="https://bs-uploads.toptal.io/blackfish-uploads/components/skill_page/content/logo_file/logo/195568/sql-64a6e0f07773cf17581e76ca09e17dbc.png"
                     alt="strapi">
-                <h3>SQL</h3>
+                <h3>#SQL</h3>
+            </a>
+            <a href="">
+                <img src="https://ellinorwase.github.io/git-project/images/git().png" alt="strapi">
+                <h3>#Git</h3>
+            </a>
+            <a href="">
+                <img src="https://bs-uploads.toptal.io/blackfish-uploads/components/skill_page/content/logo_file/logo/195568/sql-64a6e0f07773cf17581e76ca09e17dbc.png"
+                    alt="strapi">
+                <h3>#SQL</h3>
             </a>
         </div>
+        <!----
         <h2 class="text-center" style="color: #ffffff; padding-top: 40px">Interview and Questions</h2>
         <div class="instruction-manual">
             <a href="">
@@ -39,98 +50,85 @@
                     alt="strapi">
                 <h3>JavaScript</h3>
             </a>
-        </div>
+        </div> --->
     </div>
 </div>
+<!-------------end-------------->
 
 
 <div class="container">
-    <div class="row">
-
-        <div class="container">
-            <img class="container__image" src="https://mtdata.ru/u7/photo53A0/20946911428-0/original.jpg#20946911428">
-            <div class="container__text">
-                <h2>Why Do Cats Like Boxes?</h2>
-                <p>"Cats like boxes because they are cryptic animals; they like to hide," Stephen Zawistowski,
-                    science adviser
-                    for the American Society for the Prevention of Cruelty to Animals, told Business Insider. "And a
-                    box gives
-                    them a place of safety and security."</p>
-                <p>While inside a box, cats feel that they cannot be snuck up on from behind or the side — anything
-                    that wants
-                    to approach them must come directly into their field of vision. In effect, such hiding spaces
-                    allow them to
-                    watch the world around them without being seen.</p>
+    <div class="row mt-5">
+        {% for post in posts %}
+        {% if request.user.is_authenticated %}
+        <div class="d-none d-md-block col-lg-2 col-md-3 offset-2">
+            <div class="img-container">
+                <img src="{% static 'img/20200101_215945.jpg' %}" alt="team member" class="img-full">
             </div>
         </div>
-        <!---start------>
-        <div class="inner">
-            <section class="post-feed">
-
-                <article class="post-card">
-                    <a class="post-card-image-link" href="#">
-                        <img class="post-card-image" style="width: 300px; height:300px;"
-                            src="{% static 'img/download.png' %}" alt="">
+        <div class="col-lg-6 col-md-5 mb-4">
+            <div class="member_designation">
+                <span class="post-card-tags">
+                    <a href="#">#Javascript</a>
+                </span>
+                <h3 class="my-3">
+                    <a href="{{ post.get_absolute_url }}" style="text-decoration: none; color: #000;">
+                        {{ post.title }}
                     </a>
-                    <div class="card-post-content">
-                        <div class="card-post-content-link">
-                            <header class="post-card-header">
-                                <span class="post-card-tags">
-                                    <a href="#">#Javascript</a>
-                                </span>
-                                <h2 class="post-card-title">
-                                    <a href="{{ post.get_absolute_url }}">
-                                        {{ post.title }}
-                                    </a>
-                                </h2>
-                            </header>
-                        </div>
-                        <footer class="post-card-meta">
-                            <ul class="author-list">
-                                <li class="author-list-item">
-                                    <a class="static-avatar" href="#">
-                                        <img src="#" class="author-profile-image" width="2000" height="2000" alt="">
-                                    </a>
-                                    <span class="meta-content">
-                                        <a class="meta-item" href="">{{ post.author }}</a>
-                                        <p class="meta-item">{{ post.publish }}</p>
-                                    </span>
-                                </li>
-                            </ul>
-                        </footer>
-                    </div>
-                </article>
-
-            </section>
+                </h3>
+            </div>
+            <div class="member_desc">
+                <footer class="post-card-meta">
+                    <ul class="author-list">
+                        <li class="author-list-item">
+                            <a class="static-avatar" href="#">
+                                <img src="{% static 'img/20200101_215945.jpg' %}" class="author-profile-image"
+                                    width="2000" height="2000" alt="">
+                            </a>
+                            <span class="meta-content">
+                                <a class="meta-item" href="">{{ post.author }}</a>
+                                <p class="meta-item">{{ post.publish }}</p>
+                            </span>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
         </div>
-
-
-
-        <!-----end---->
-        <div class="col-12 col-md-10 col-lg-10 offset-2 ">
-            <h1>My Blog</h1>
-            {% for post in posts %}
-            {% if request.user.is_authenticated %}
-            <h2>
-                <a href="{{ post.get_absolute_url }}">
-                    {{ post.title }}
-                </a>
-            </h2>
-            <p class="date">
-                Published {{ post.publish }} by {{ post.author }}
-            </p>
-            {{ post.body|truncatewords:30|linebreaks }}
-            {% else %}
-            <p class="date">
-                Published {{ post.publish }} by {{ post.author }}
-            </p>
-            {% endif %}
-
-            {% endfor %}
-
-            <!----pagination section-->
+        {% else %}
+        <div class="d-none d-md-block col-lg-2 col-md-3 offset-2">
+            <div class="img-container">
+                <img src="{% static 'img/20200101_215945.jpg' %}" alt="team member" class="img-full">
+            </div>
         </div>
-
+        <div class="col-lg-6 col-md-5 mb-4">
+            <div class="member_designation">
+                <span class="post-card-tags">
+                    <a href="#">#Javascript</a>
+                </span>
+                <h3 class="my-3">
+                    <a href="{{ post.get_absolute_url }}" style="text-decoration: none; color: #000;">
+                        {{ post.title }}
+                    </a>
+                </h3>
+            </div>
+            <div class="member_desc">
+                <footer class="post-card-meta">
+                    <ul class="author-list">
+                        <li class="author-list-item">
+                            <a class="static-avatar" href="#">
+                                <img src="{% static 'img/20200101_215945.jpg' %}" class="author-profile-image"
+                                    width="2000" height="2000" alt="">
+                            </a>
+                            <span class="meta-content">
+                                <a class="meta-item" href="">{{ post.author }}</a>
+                                <p class="meta-item">{{ post.publish }}</p>
+                            </span>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
