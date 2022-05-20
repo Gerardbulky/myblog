@@ -4,7 +4,22 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
-# Create your models here.
+# Create your models here
+class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Categories'   # fixes Categorys in adminsite
+
+    name = models.CharField(max_length=254)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_friendly_name(self):
+        return self.friendly_name
+
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager,
@@ -17,11 +32,15 @@ class Post(models.Model):
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    name = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250,
                             unique_for_date='publish')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     body = models.TextField()
+    image = models.ImageField(upload_to='products/%Y/%m/%d',
+                              blank=True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

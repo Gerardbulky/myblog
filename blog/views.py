@@ -1,15 +1,17 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Category, Post
 from django.core.paginator import Paginator, EmptyPage,\
                                   PageNotAnInteger
 
 
 # Create your views here.
-def post_list(request):
+def post_list(request, category_slug=None):
     posts = Post.published.all()
     object_list = Post.published.all()
     paginator = Paginator(object_list, 3)  # 1 posts in each page
     page = request.GET.get('page')
+    categories = Category.objects.all()
+    
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -18,9 +20,11 @@ def post_list(request):
     except EmptyPage:
         # If page is not of range deliver last page of result
         posts = paginator.page(paginator.num_pages)
-    return render(request, 'blog/post/list.html',
-                           {'page': page,
-                            'posts': posts})
+
+    return render(request, 'blog/post/list.html', {'page': page,
+                                                   'posts': posts,
+                                                   'categories': categories,
+                                                   'paginator': paginator})
 
 
 def post_detail(request, year, month, day, post):

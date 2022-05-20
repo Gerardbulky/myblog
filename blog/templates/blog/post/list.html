@@ -55,14 +55,31 @@
 </div>
 <!-------------end-------------->
 
-
+<!------------------image left text right body section-------------------------------------------->
 <div class="container">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Blog</h2>
+            <!---displays extra category badges in -->
+            {% for c in categories %}
+            <a class="category-badge text-decoration-none" href="#">
+                <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.slug
+                    }}</span>
+            </a>
+            {% endfor %}
+            <hr class="w-50 mb-1">
+        </div>
+    </div>
     <div class="row mt-5">
         {% for post in posts %}
         {% if request.user.is_authenticated %}
         <div class="d-none d-md-block col-lg-2 col-md-3 offset-2">
             <div class="img-container">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="team member" class="img-full">
+                {% else %}
                 <img src="{% static 'img/20200101_215945.jpg' %}" alt="team member" class="img-full">
+                {% endif %}
             </div>
         </div>
         <div class="col-lg-6 col-md-5 mb-4">
@@ -129,6 +146,46 @@
         </div>
         {% endif %}
         {% endfor %}
+    </div>
+    <!----------section for pagination----------------->
+    <div class="row mt-5">
+        <div class="col-sm-12 col-xs-12 col-md-10 col-lg-10 offset-2">
+            <h6 class="text-center" style="margin-left: auto; margin-right: auto;">
+                {% include "pagination.html" with page=posts %}</h6>
+        </div>
+    </div>
+</div>
+<!-- ------------Nellie Maxwell Header section---------------->
+<div class="container-m-nx container-m-ny theme-bg-white mt-4">
+    <div class="media col-md-10 col-lg-8 col-xl-7 py-5 mx-auto"
+        style="padding: 15px; border: 3px solid rgb(241, 246, 249);">
+        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="d-block ui-w-100 rounded-circle"
+            align="left" style="margin-right: 25px;">
+        <div class="media-body ml-5">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="font-weight-bold mb-4">Nellie Maxwell</h4>
+
+                    <div class="text-muted mb-4">
+                        Lorem ipsum dolor sit amet, nibh suavitate qualisque ut nam. Ad harum primis electram
+                        duo,
+                        porro
+                        principes ei has.
+                    </div>
+                </div>
+                <div class="button-section col-12" style="display: flex;">
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary btn-sm btn-block">
+                            <i class="fa fa-envelope"></i> Send Message</button>
+                    </div>
+
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-default btn-sm btn-block">
+                            <i class="fa fa-coffee"></i> Buy a coffee</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
