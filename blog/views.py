@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
 from .models import Category, Post
 from django.core.paginator import Paginator, EmptyPage,\
                                   PageNotAnInteger
@@ -11,6 +13,18 @@ def post_list(request, category_slug=None):
     paginator = Paginator(object_list, 3)  # 1 posts in each page
     page = request.GET.get('page')
     categories = Category.objects.all()
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter any search query")
+                return redirect(reverse('post_list'))
+
+            queries = Q(name__icontains=query) | Q(body__icontains=query)
+            posts = posts.filter(queries)
+
     
     try:
         posts = paginator.page(page)
@@ -23,6 +37,7 @@ def post_list(request, category_slug=None):
 
     return render(request, 'blog/post/list.html', {'page': page,
                                                    'posts': posts,
+                                                   'search_term': query,
                                                    'categories': categories,
                                                    'paginator': paginator})
 
