@@ -7,7 +7,7 @@ app_name = 'letter'
 urlpatterns = [
     # post views
     path('', views.news_list, name='news_list'),
-    path('<int:year>/<int:month>/<int:day>/<slug:post>/',
+    path('<int:year>/<int:month>/<int:day>/<slug:news>/',
          views.news_detail,
          name='news_detail'),
 ]

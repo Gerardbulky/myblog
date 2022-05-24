@@ -3,28 +3,41 @@
 
 {% block title %}News Letter {% endblock %}
 
+
 {% block content %}
-<div class="container">
+<div class="container container-news">
     <div class="row">
         <div class="col-md-8">
             <h1>News Letter</h1>
             <hr>
             {% for new in news %}
-            <h4>
-                <a href="{{ news.get_absolute_url }}">
-                    {{ new.title }}
-                </a>
-            </h4>
-            <p class="date">
-                Published {{ new.publish }} by {{ new.author }}
-            </p>
-            {{ new.body|truncatewords:30|linebreaks }}
+            <div class="row">
+                <div class="col-sm-8 col-md-8">
+                    <h4>
+                        <a href="{{ new.get_absolute_url }}">
+                            {{ new.title }}
+                        </a>
+                    </h4>
+                    <p class="date">
+                        Published {{ new.publish }} by {{ new.author }}
+                    </p>
+                    {{ new.body|truncatewords:30|linebreaks }}
+                </div>
+
+                <div class="col-sm-8 col-md-4" style="width: 12rem; float: right;">
+                    <img class="card-img-top"
+                        src="https://mtdata.ru/u7/photo53A0/20946911428-0/original.jpg#20946911428"
+                        alt="Card image cap">
+                </div>
+            </div>
+            <br>
+            <br>
             {% endfor %}
+
         </div>
         <div class="col-md-4">
             <div id="sidebar">
-                <h2>My blog</h2>
-                <p>This is my blog.</p>
+                <h6>DISCOVER MORE OF WHAT MATTERS TO YOU.</h6>
             </div>
         </div>
     </div>

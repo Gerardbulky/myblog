@@ -1,12 +1,18 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 
-{% block title %}{{ new.title }}{% endblock %}
+{% block title %}{{ news.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ new.title }}</h1>
-<p class="date">
-    Published {{ new.publish }} by {{ new.author }}
-</p>
-{{ new.body|linebreaks }}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ news.title }}</h1>
+            <p class="date">
+                Published {{ news.publish }} by {{ news.author }}
+            </p>
+            {{ news.body|linebreaks }}
+        </div>
+    </div>
+</div>
 {% endblock %}
