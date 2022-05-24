@@ -48,10 +48,19 @@ body {
     color: #000;
 }
 
+.social-section a {
+    color: #000;
+}
+
 /*--------------trying image left and content right--------*/
 
-
-
+.container-m-nx {
+    box-shadow: 0 0 30px rgb(31 45 61 / 13%);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 20px;
+}
 
 /* -------section for image left/content right in list.html-------*/
 .post-feed {

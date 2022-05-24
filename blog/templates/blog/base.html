@@ -16,7 +16,7 @@
 
 <body>
     {% block page_header %}
-    <header class="container">
+    <header class="container-fluid">
         <div id="topnav" class="row bg-white py-lg-3 d-none d-lg-flex">
             <!---------------------------------Logo Name------------------------>
             <div class="col-12 col-lg-3 my-auto py-1 py-lg-4 text-center text-lg-left  offset-1">
@@ -51,7 +51,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="logo-font font-weight-bold nav-link text-black mr-5"
-                                    href="{% url 'blog:news_letter' %}" id="homeware-link" data-toggle="dropdown"
+                                    href="{% url 'letter:news_list' %}" id="homeware-link" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     NewsLetter
                                 </a>
@@ -80,6 +80,23 @@
     </header>
     {% endblock %}
     <!----------header section ends------>
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
     <!-------------------Portfolio section start---------------------------------------->
     {% block content %}
     <div class=" blog-single">
@@ -356,21 +373,20 @@
 
             </div>
             <!-- Nellie Maxwell Header section-->
-            <div class="container-m-nx container-m-ny theme-bg-white mt-4">
-                <div class="media col-md-10 col-lg-8 col-xl-7 py-5 mx-auto" style="padding: 15px;">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                        class="d-block ui-w-100 rounded-circle" align="left" style="margin-right: 25px;">
+            <div class="container-m-n container-m-ny theme-bg-white mt-4">
+                <div class="media col-md-10 col-lg-8 col-xl-7 py-5 mx-auto"
+                    style="padding: 15px; border: 3px solid rgb(241, 246, 249);">
+                    <img src="static/img/20200101_215945.jpg" alt="" class="d-block ui-w-100 rounded-circle"
+                        align="left" style="margin-right: 25px;">
                     <div class="media-body ml-5">
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="font-weight-bold mb-4">Nellie Maxwell</h4>
+                                <h4 class="font-weight-bold mb-4">Author</h4>
 
                                 <div class="text-muted mb-4">
-                                    Lorem ipsum dolor sit amet, nibh suavitate qualisque ut nam. Ad harum primis
-                                    electram
-                                    duo,
-                                    porro
-                                    principes ei has.
+                                    Hey, I’m Gerard, a full stack software engineer. I write about what I know to help
+                                    viewers like you. If you enjoy my
+                                    content, please consider supporting what I do!
                                 </div>
                             </div>
                             <div class="button-section col-12" style="display: flex;">
@@ -393,7 +409,47 @@
     </div>
     {% endblock %}
 
+    <!-- Footer-->
     {% block footer %}
+    <footer class="footer text-center mt-5" style="background-color: #f7f7f7;  color: #000;">
+        <div class="container pt-5 pb-5">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h5 class="text-uppercase mb-4">mission</h5>
+                    <p class="lead mb-0" style="color: #000;">
+                        My mission is to help people learn to code for free. I can accomplish this by creating thousands
+                        of
+                        videos, articles, and
+                        interactive coding lessons - all freely available to the public..
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="social-section col-lg-3 mb-5 mb-lg-0">
+                    <h5 class="text-uppercase mb-4">Social</h5>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
+                            class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-3 small">
+                    <h5 class="text-uppercase mb-4">contact</h5>
+                    <p class="lead mb-0">
+                        Stay in touch
+                        <a href="#">Send Message</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white" style="background-color: black;">
+        <div class="container"><small>Copyright &copy; GerardAmbe 2022</small></div>
+    </div>
     {% endblock %}
 
 </body>

@@ -10,22 +10,28 @@ from django.core.paginator import Paginator, EmptyPage,\
 def post_list(request, category_slug=None):
     posts = Post.published.all()
     object_list = Post.published.all()
-    paginator = Paginator(object_list, 3)  # 1 posts in each page
+    paginator = Paginator(object_list, 4)  # 1 posts in each page
     page = request.GET.get('page')
-    categories = Category.objects.all()
+
     query = None
+    category = None
 
     if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            posts = posts.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search query")
-                return redirect(reverse('post_list'))
+                return redirect(reverse('blog'))
 
-            queries = Q(name__icontains=query) | Q(body__icontains=query)
+            queries = Q(name__icontains=query) | Q(body__icontains=query) | Q(title__icontains=query )
             posts = posts.filter(queries)
 
-    
+ 
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -38,7 +44,6 @@ def post_list(request, category_slug=None):
     return render(request, 'blog/post/list.html', {'page': page,
                                                    'posts': posts,
                                                    'search_term': query,
-                                                   'categories': categories,
                                                    'paginator': paginator})
 
 
@@ -50,9 +55,3 @@ def post_detail(request, year, month, day, post):
                                    publish__day=day)
 
     return render(request, 'blog/post/detail.html', {'post': post})
-
-
-
-def news_letter(request, methods=["POST", "GET"]):
-
-    return(request, 'blog/post/news_letter.html')
