@@ -3,6 +3,13 @@
 
 {% block title %}News Letter {% endblock %}
 
+{% block head-element %}
+<div class="row blockquote">
+    <div class="col">
+
+    </div>
+</div>
+{% endblock %}
 
 {% block content %}
 <div class="container container-news">
@@ -14,19 +21,21 @@
             <div class="row">
                 <div class="col-sm-8 col-md-8">
                     <h4>
-                        <a href="{{ new.get_absolute_url }}">
+                        <a style="text-decoration: none; color:black" href="{{ new.get_absolute_url }}">
                             {{ new.title }}
+                            <p class="date">
+                                Published {{ new.publish }} by {{ new.author }}
+                            </p>
+                            {{ new.body|truncatewords:30|linebreaks }}
                         </a>
                     </h4>
-                    <p class="date">
-                        Published {{ new.publish }} by {{ new.author }}
-                    </p>
-                    {{ new.body|truncatewords:30|linebreaks }}
+
+
                 </div>
 
                 <div class="col-sm-8 col-md-4" style="width: 12rem; float: right;">
                     <img class="card-img-top"
-                        src="https://mtdata.ru/u7/photo53A0/20946911428-0/original.jpg#20946911428"
+                        src="https://cdn-media-2.freecodecamp.org/w1280/604adcf9a7946308b7687147.jpg"
                         alt="Card image cap">
                 </div>
             </div>

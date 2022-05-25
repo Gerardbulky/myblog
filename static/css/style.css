@@ -4,6 +4,10 @@ body {
     background-color: #ffffff;
 }
 
+.nav-icons .nav-item a {
+    color: #000;
+}
+
 .gradient-section {
     background: radial-gradient(circle at 20% 20%, #1b1b32 25%, #1b1b32 100%);
     border-bottom: 1px solid #ddd;
