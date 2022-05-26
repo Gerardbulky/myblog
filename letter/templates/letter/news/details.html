@@ -12,6 +12,12 @@
                 Published {{ news.publish }} by {{ news.author }}
             </p>
             {{ news.body|linebreaks }}
+            <p>
+                <a href="{% url 'letter:news_share' news.id %}">
+                    Share this post
+                </a>
+            </p>
+
         </div>
     </div>
 </div>
