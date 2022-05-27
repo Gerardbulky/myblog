@@ -1,5 +1,14 @@
  /*All the styling goes here*/
 
+ /* my section   */
+ .control-group {
+     margin-bottom: 10px;
+ }
+
+
+
+ /* end  */
+
  img {
      border: none;
      -ms-interpolation-mode: bicubic;

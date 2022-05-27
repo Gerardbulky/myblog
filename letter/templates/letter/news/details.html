@@ -6,15 +6,17 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-12 col-md-8 offset-2">
             <h1>{{ news.title }}</h1>
             <p class="date">
                 Published {{ news.publish }} by {{ news.author }}
             </p>
             {{ news.body|linebreaks }}
+            <hr>
             <p>
-                <a href="{% url 'letter:news_share' news.id %}">
-                    Share this post
+                <a href="{% url 'letter:news_share' news.id %}"
+                    style="text-decoration: none; font-size: large; color: #000;">
+                    <i class="fa-solid fa-share"></i> Share
                 </a>
             </p>
 
