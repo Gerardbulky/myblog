@@ -1,26 +1,94 @@
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}Share a post{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            {% if sent %}
-            <h1>E-mail successfully sent</h1>
-            <p>
-                "{{ news.title }}" was successfully sent to {{ form.cleaned_data.to }}.
-            </p>
-            {% else %}
-            <h4>Share "{{ news.title }}" by e-mail</h4>
-            <form method="post">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <input type="submit" value="Send e-mail">
-            </form>
-            {% endif %}
-        </div>
-    </div>
-</div>
+
+
+
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <title>Simple Transactional Email</title>
+</head>
+
+<body class="">
+    <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+                <div class="content">
+
+                    <!-- START CENTERED WHITE CONTAINER -->
+                    <table role="presentation" class="main">
+
+                        <!-- START MAIN CONTENT AREA -->
+                        {% if sent %}
+                        <h1>E-mail successfully sent</h1>
+                        <p>
+                            "{{ news.title }}" was successfully sent to {{ form.cleaned_data.to }}.
+                        </p>
+                        {% else %}
+                        <h4>Share "{{ news.title }}" by e-mail</h4>
+                        <tr>
+                            <td class="wrapper">
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+
+                                            <form method="post">
+                                                {{ form|crispy }}
+                                                {% csrf_token %}
+                                                <input type="submit" value="Send e-mail">
+                                            </form>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- END MAIN CONTENT AREA -->
+                    </table>
+                    <!-- END CENTERED WHITE CONTAINER -->
+
+                    <!-- START FOOTER -->
+                    <div class="footer">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="content-block">
+                                    <span class="apple-link">Kanikenäsbanken 17, Karlstad, Sweden</span>
+                                    <br> Want to view more articles? <a href="http://i.imgur.com/CScmqnj.gif">View</a>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content-block powered-by">
+                                    Copyright <a href="http://htmlemail.io">@Gerard Ambe</a>.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- END FOOTER -->
+
+                </div>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</body>
+
+</html>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block copyright %}
 {% endblock %}

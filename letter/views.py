@@ -22,7 +22,7 @@ def news_detail(request, year, month, day, news):
 
 
 
-def news_share(request, news_id):
+def news_share(request, news_id): #passed in a new id for this particular possed news_id
     # Retrieve post by id
     news = get_object_or_404(News, id=news_id, status='published')
     sent = False
