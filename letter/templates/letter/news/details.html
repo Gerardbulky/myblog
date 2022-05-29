@@ -1,24 +1,104 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% block xtra_script %}
+<script src="{% static 'js/news.js' %}"></script> {% endblock %}
+
+{% block xtra_css %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}" type="text/css">{% endblock %}
 
 {% block title %}{{ news.title }}{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-8 offset-2">
+        <div class="col-sm-12 col-md-8 offset-2">
             <h1>{{ news.title }}</h1>
             <p class="date">
                 Published {{ news.publish }} by {{ news.author }}
             </p>
             {{ news.body|linebreaks }}
-            <hr>
-            <p>
-                <a href="{% url 'letter:news_share' news.id %}"
-                    style="text-decoration: none; font-size: large; color: #000;">
-                    <i class="fa-solid fa-share"></i> Share
-                </a>
+
+            {% with comments.count as total_comments %}
+            <p class="comment" style="text-decoration: none; margin-bottom: 0px; color: #000; float: right;">
+                {{ total_comments }} comment{{ total_comments|pluralize }}
             </p>
+            {% endwith %}
+
+            <hr style="width: 100%;">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="share">
+                        <a href="{% url 'letter:news_share' news.id %}"
+                            style="text-decoration: none; font-size: large; color: #000;">
+                            Share <i class="fa-solid fa-share"></i>
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-light" onclick="myFunction()">Comment <i
+                            class="fa-solid fa-comment-dots"></i></button>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <!---------------section for displayed contents------------>
+            {% for comment in comments %}
+            <div class="comment">
+                <a class="static-avatar" href="#">
+                    <img src="{% static 'img/20200101_215945.jpg' %}" class="author-profile-image" width="2000"
+                        height="2000" alt="">
+                </a>
+                <div class="info" style="float:right">
+                    Comment {{ forloop.counter }} by {{ comment.name }}
+                    <p>
+                        {{ comment.created }}
+                    </p>
+                    {{ comment.body|linebreaks }}
+                </div>
+            </div>
+            {% empty %}
+            <p> comments <i class="fa-solid fa-comment-dots"></i>.</p>
+            {% endfor %}
+
+
+            <div id="myDIV">
+                {% if new_comment %}
+                <h2>Your comment has been added.</h2>
+                {% else %}
+                <h2>Add a new comment</h2>
+                <form method="post">
+                    {{ comment_form.as_p }}
+                    {% csrf_token %}
+                    <p><input type="submit" value="Add comment"></p>
+                </form>
+                {% endif %}
+            </div>
+
+
+
+            {% for comment in comments %}
+            <div class="media col-md-10 col-lg-8 col-xl-7 py-5 mx-auto"
+                style="padding: 15px; border: 3px solid rgb(241, 246, 249);">
+                <a class="static-avatar" href="#">
+                    <img src="{% static 'img/20200101_215945.jpg' %}" class="author-profile-image" width="2000"
+                        height="2000" alt="">
+                </a>
+                <div class="media-body ml-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="font-weight-bold mb-4">Comment {{ forloop.counter }} by {{ comment.name }}</h4>
+                            <p>
+                                {{ comment.created }}
+                            </p>
+
+                            <div class="text-muted mb-4">
+                                {{ comment.body|linebreaks }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!----end-->
 
         </div>
     </div>

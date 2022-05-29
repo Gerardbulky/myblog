@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
 from django.core.mail import send_mail
-from .models import News
-from .forms import EmailPostForm
+from .models import News, Comment
+from .forms import EmailPostForm, CommentForm
 
 
 def news_list(request):
@@ -16,9 +16,28 @@ def news_detail(request, year, month, day, news):
                                    publish__year=year,
                                    publish__month=month,
                                    publish__day=day)
+    # List of active comments for this post
+    comments = news.comments.filter(active=True)
+    new_comment = None
+    if request.method == 'POST':
+        # A comment was posted
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.news = news
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
     return render(request,
                   'letter/news/details.html',
-                  {'news': news})
+                  {'news': news,
+                   'comments': comments,
+                   'new_comment': new_comment,
+                   'comment_form': comment_form})
 
 
 
