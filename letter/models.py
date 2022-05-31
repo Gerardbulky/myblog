@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 
 
@@ -9,7 +10,6 @@ class PublishedManager(models.Manager):
         return super(PublishedManager,
                      self).get_queryset()\
                           .filter(status='published')
-
 
 
 class News(models.Model):
@@ -21,8 +21,8 @@ class News(models.Model):
     slug = models.SlugField(max_length=250,
                             unique_for_date='publish')
     author = models.ForeignKey(User,
-                              on_delete=models.CASCADE,
-                              related_name='news_posts')
+                               on_delete=models.CASCADE,
+                               related_name='news_posts')
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -32,6 +32,7 @@ class News(models.Model):
                               default='published')
     objects = models.Manager() # The default manager.
     published = PublishedManager() # Our custom manager.
+    tags = TaggableManager()
 
     # Getting Absolute URL
     def get_absolute_url(self):
@@ -43,6 +44,7 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = 'News'   # fixes Categorys in adminsite
         ordering = ('-publish',)
+
     def __str__(self):
         return self.title
 

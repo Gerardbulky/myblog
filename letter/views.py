@@ -1,13 +1,20 @@
+from django.db.models import Count
 from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
-from django.core.mail import send_mail
 from .models import News, Comment
+from taggit.models import Tag
 from .forms import EmailPostForm, CommentForm
 
 
-def news_list(request):
+def news_list(request, tag_slug=None):
     news = News.published.all()
-    return render(request, 'letter/news/list.html', {'news': news})
+    tag = None
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+    
+    return render(request, 'letter/news/list.html', {'news': news,
+                                                     'tag': tag})
 
 
 def news_detail(request, year, month, day, news):
@@ -16,6 +23,7 @@ def news_detail(request, year, month, day, news):
                                    publish__year=year,
                                    publish__month=month,
                                    publish__day=day)
+
     # List of active comments for this post
     comments = news.comments.filter(active=True)
     new_comment = None
@@ -32,13 +40,19 @@ def news_detail(request, year, month, day, news):
     else:
         comment_form = CommentForm()
 
+    # List of similar posts
+    news_tags_ids = news.tags.values_list('id', flat=True)
+    similar_news = News.published.filter(tags__in=news_tags_ids)\
+                                 .exclude(id=news.id)
+    similar_news = similar_news.annotate(same_tags=Count('tags'))\
+                               .order_by('-same_tags', '-publish')[:4]
     return render(request,
                   'letter/news/details.html',
                   {'news': news,
                    'comments': comments,
                    'new_comment': new_comment,
-                   'comment_form': comment_form})
-
+                   'comment_form': comment_form,
+                   'similar_news': similar_news})
 
 
 def news_share(request, news_id): #passed in a new id for this particular possed news_id

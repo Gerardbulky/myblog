@@ -1,13 +1,15 @@
 {% extends 'blog/base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
+
 {% block xtra_script %}
 <script src="{% static 'js/news.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 {% endblock %}
 
 {% block xtra_css %}
-<link rel="stylesheet" href="{% static 'css/news.css' %}" type="text/css">{% endblock %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}" type="text/css">
+{% endblock %}
 
 {% block title %}{{ news.title }}{% endblock %}
 
@@ -29,6 +31,8 @@
 
             <hr style="width: 100%;">
             <div class="row">
+
+                <!------------section for share---------------->
                 <div class="col-md-4">
                     <p class="share">
                         <a href="{% url 'letter:news_share' news.id %}"
@@ -37,18 +41,30 @@
                         </a>
                     </p>
                 </div>
+
+                <!------------section for comment---------------->
                 <div class="col-md-4">
                     <span id="comment" style="font-size: large;">Comment <i class="fa-solid fa-comment-dots"></i></span>
                 </div>
-                <div class="col-md-4"></div>
-            </div>
-            <!---------------section for displayed contents------------>
 
+                <!-------------section for similar post----------->
+                <div class="col-md-4">
+                    <h6>Similar posts <i class="fa-solid fa-arrows-to-circle"></i></h6>
+                    {% for news in similar_news %}
+                    <p>
+                        <a href="{{ news.get_absolute_url }}">{{ news.title }}</a>
+                    </p>
+                    {% empty %}
+                    There are no similar posts yet.
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!---------------section to write comments------------>
             <div id="myDIV">
                 {% if new_comment %}
                 <h2>Your comment has been added.</h2>
                 <a href="{% url 'letter:news_list' %}">back</a>
-
                 {% else %}
                 <h2>Add a new comment</h2>
                 <form method="post">
@@ -59,12 +75,11 @@
                 {% endif %}
             </div>
 
-
-
+            <!--------------section to display comment---------------->
             <div class="section mt-5">
                 {% for comment in comments %}
                 <div class="media col-md-10 col-lg-8 col-xl-7 mx-auto"
-                    style="padding: 15px; border: 1px solid rgb(241, 246, 249);">
+                    style="padding: 15px; border: 2px solid rgb(241, 246, 249);">
                     <div class="media-body ml-5">
                         <div class="row">
                             <div class="col-12">

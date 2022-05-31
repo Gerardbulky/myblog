@@ -17,6 +17,11 @@
         <div class="col-md-8">
             <h1>News Letter</h1>
             <hr>
+
+            {% if tag %}
+            <h2>Posts tagged with "{{ tag.name }}"</h2>
+            {% endif %}
+
             {% for new in news %}
             <div class="row">
                 <div class="col-12 col-md-8">
@@ -27,9 +32,23 @@
                                 Published {{ new.publish }} by {{ new.author }}
                             </p>
                             {{ new.body|truncatewords:30|linebreaks }}
+
+                            <!---------filtering tags section-------------->
+                            <p class="tags" style="font-size: 15px; color: black;">
+                                Tags:
+                                {% for tag in new.tags.all %}
+                                <a href="{% url  'letter:news_list_by_tag' tag.slug %}" style="text-decoration: none;">
+                                    <span
+                                        style="background-color: #f2f2f2; border-radius: 75%; padding: 5px; margin-left: 10px; color: black;">
+                                        {{ tag.name }}</span> <i style="font-size: 10px; color: #000;"
+                                        class="fa-solid fa-star"></i>
+                                </a>
+                                {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                            <!------end-------->
                         </a>
                     </h4>
-
                 </div>
 
                 <div class="col-sm-8 col-md-4" style="width: 12rem; float: right;">
